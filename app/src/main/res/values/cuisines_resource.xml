@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cuisines_resource">
+         <item>Món Ăn</item>
+         <item>Món Việt</item>
+         <item>Món Trung Hoa</item>
+         <item>Món Huế</item>
+         <item>Món Ấn Độ</item>
+         <item>Món Thái</item>
+         <item>Món Nhật</item>
+         <item>Món Hàn</item>
+         <item>Món Singapore</item>
+         <item>Món Âu</item>
+
+    </string-array>
+</resources>

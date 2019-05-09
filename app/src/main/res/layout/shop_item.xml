@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="15dp">
+
+    <ImageView
+        android:id="@+id/shop_image"
+        android:layout_width="140dp"
+        android:layout_height="80dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/shop_image"
+        android:paddingLeft="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/shop_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/gray"
+            android:fontWeight="600"
+            android:text="Bee shop" />
+
+        <TextView
+            android:id="@+id/shop_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:fontWeight="300"
+            android:text="Hà Nội, Hai Bà Trưng , 452 Nguyễn Kh" />
+
+    </LinearLayout>
+
+</RelativeLayout>

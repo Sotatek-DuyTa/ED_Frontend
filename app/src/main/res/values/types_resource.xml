@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="types_resource">
+        <item>Thể Loại</item>
+        <item>Sang trọng</item>
+        <item>Buffet</item>
+        <item>Nhà hàng</item>
+        <item>Ăn vặt/vỉa hè</item>
+        <item>Ăn chay</item>
+        <item>Café/Dessert</item>
+        <item>Quán ăn</item>
+        <item>Bar/Pub</item>
+        <item>Quán nhậu</item>
+        <item>Beer club</item>
+        <item>Tiệm bánh</item>
+        <item>Tiệc tận nơi</item>
+        <item>Shop online</item>
+        <item>Giao cơm văn phòng</item>
+        <item>Khu ẩm thực</item>
+    </string-array>
+</resources>

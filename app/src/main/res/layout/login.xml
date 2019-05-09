@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorLogo"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:text="@string/app_name" />
+
+        <EditText
+            android:id="@+id/email_input"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:ems="10"
+            android:textColor="@color/textInputAuthPage"
+            android:hint="@string/hint_email"
+            android:selectAllOnFocus="true"
+            android:textColorHint="@color/textInputAuthPage"
+            android:inputType="textEmailAddress"
+            android:paddingBottom="20dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text=""
+            android:textSize="10sp" />
+
+        <EditText
+            android:id="@+id/password_input"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:textColor="@color/textInputAuthPage"
+            android:ems="10"
+            android:selectAllOnFocus="true"
+            android:hint="@string/hint_password"
+            android:textColorHint="@color/textInputAuthPage"
+            android:inputType="textWebPassword"
+            android:paddingBottom="20dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text=""
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_01"
+            android:text="@string/button_login"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            style="?android:attr/borderlessButtonStyle"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/redirect_to_register_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/suggest_register"
+            android:textAlignment="center"
+            android:textSize="8sp"
+            android:textColor="@color/textSuggestAuthPage" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorWhite">#FFF</color>
+    <color name="colorPink_Primary">#F353AD</color>
+    <color name="logo_color">#F44336</color>
+    <color name="gray">#333</color>
+    <color name="orange">#F44336</color>
+    <color name="colorSpecial">#32c5d2</color>
+
+
+    <!--auth page-->
+    <color name="colorLogo">#32c5d2</color>
+    <color name="textInputAuthPage">#fff</color>
+    <color name="textButtonAuthPage">#fff</color>
+    <color name="backgroundButtonAuthPage">#32c5d2</color>
+    <color name="textSuggestAuthPage">#fff</color>
+
+</resources>
