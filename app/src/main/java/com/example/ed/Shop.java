@@ -1,6 +1,8 @@
 package com.example.ed;
 
-public class Shop {
+import java.io.Serializable;
+
+public class Shop implements Serializable {
     private String shop_id;
     private String name;
     private String location;

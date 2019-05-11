@@ -98,7 +98,7 @@ class findTypeRequest extends AsyncTask {
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    private String ipAddress = "http://35.247.173.72:5000";
+    private String ipAddress = "http://192.168.1.10:5000";
 
     public findTypeRequest(String pathUrl, String params) {
         this.url = this.ipAddress + pathUrl;
@@ -141,7 +141,7 @@ class findTypeRequest extends AsyncTask {
 //
 //    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 //
-//    private String ipAddress = "http://35.247.173.72:5000";
+//    private String ipAddress = "http://192.168.1.10:5000";
 //
 //    public GetAllShopRequest(String pathUrl, String params) {
 //        this.url = this.ipAddress + pathUrl;

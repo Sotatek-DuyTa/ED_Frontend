@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp">
 
     <RelativeLayout
         android:id="@+id/top_content"
@@ -9,51 +9,66 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:background="#ccc"
             android:id="@+id/shop_image"
-            android:layout_width="140dp"
-            android:layout_height="80dp" />
+            android:layout_width="match_parent"
+            android:layout_height="240dp" />
 
         <LinearLayout
-            android:layout_toRightOf="@+id/shop_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_below="@+id/shop_image"
+            android:layout_alignParentLeft="true"
+            android:layout_toRightOf="@+id/shop_image"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
 
             <TextView
+                android:layout_marginBottom="10dp"
                 android:id="@+id/shop_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="Loading..."
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorLogo"
+                android:padding="10dp"
+                android:text="Loading..."
+                android:textColor="#fff" />
 
             <TextView
+                android:layout_marginBottom="10dp"
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:drawableLeft="@drawable/ic_maps_and_flags"
+                android:drawablePadding="5dp"
+                android:text="Loading..." />
 
             <TextView
-                android:id="@+id/sort_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
+                android:layout_marginBottom="10dp"
                 android:id="@+id/shop_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:drawableLeft="@drawable/ic_tag_black_shape"
+                android:drawablePadding="5dp"
+                android:text="Loading..." />
 
             <TextView
-                android:id="@+id/shop_cuisine"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/sort_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:drawableLeft="@drawable/ic_bargains"
+                android:textColor="#EB3A3A"
+                android:drawablePadding="5dp"
+                android:text="Loading..." />
+
         </LinearLayout>
     </RelativeLayout>
 

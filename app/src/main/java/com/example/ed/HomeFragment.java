@@ -60,9 +60,6 @@ public class HomeFragment extends Fragment {
                     params = "{\"type_id\":" + pos + "}";
                 }
 
-//                GetAllShopRequest get_all_shop = new GetAllShopRequest("/find_type","{\"type_id\":3}", view.getContext(), listShop);
-//                get_all_shop.execute();
-
                 GetAllShopRequest get_all_shop = new GetAllShopRequest(pathUrl,params, view.getContext(), listShop);
                 get_all_shop.execute();
 
@@ -105,27 +102,23 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    public void initListShop(View v) {
-//        listShop = v.findViewById(R.id.list_shop);
-//
-//        GetAllShopRequest get_all_shop = new GetAllShopRequest("/find_type","{\"type_id\":3}", v.getContext(), listShop);
-//        get_all_shop.execute();
-
-    }
-
-//    @Override
-//    public void onAttach(Activity activity) {
-//        myContext=(FragmentActivity) activity;
-//        super.onAttach(activity);
-//    }
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view= inflater.inflate(R.layout.home, container, false);
 
         initListType(view);
         initListCuisine(view);
-        initListShop(view);
+
+        listShop = view.findViewById(R.id.list_shop);
+
+        listShop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Intent intent = new Intent(HomeFragment.this.getActivity(), ShopDetailFragment.class);
+                intent.putExtra("shop_id", Integer.parseInt(GetAllShopRequest.shopList.get(position).getShop_id()) );
+                startActivity(intent);
+//                Log.e("errrr", "asdasdsadasda");
+            }
+        });
 
         return view;
     }
@@ -135,13 +128,13 @@ public class HomeFragment extends Fragment {
 class GetAllShopRequest extends AsyncTask {
     private String url;
     private String bodyParams;
-    private ArrayList<Shop> shopList = new ArrayList<Shop>();
+    public static ArrayList<Shop> shopList = new ArrayList<Shop>();
     private Context ctx;
     private GridView listShop;
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    private String ipAddress = "http://35.247.173.72:5000";
+    private String ipAddress = "http://192.168.1.10:5000";
 
     public GetAllShopRequest(String pathUrl, String params, Context ctx, GridView listShop) {
         this.url = this.ipAddress + pathUrl;
@@ -149,14 +142,6 @@ class GetAllShopRequest extends AsyncTask {
         this.ctx = ctx;
         this.listShop = listShop;
     }
-
-//    public GetAllShopRequest(String pathUrl, String params, Context ctx, GridView listShop, Object myContext) {
-//        this.url = this.ipAddress + pathUrl;
-//        this.bodyParams = params;
-//        this.ctx = ctx;
-//        this.listShop = listShop;
-//        this.myContext = myContext;
-//    }
 
 
     @Override
@@ -202,13 +187,6 @@ class GetAllShopRequest extends AsyncTask {
                     ShopAdapter shopAdapter = new ShopAdapter(ctx, shopList);
                     changeListShop c = new changeListShop(ctx, listShop, shopAdapter);
                     c.updateShop();
-
-//                    listShop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-////                            myContext.changeFragment();
-//                            Log.e("errrr", "asdasdsadasda");
-//                        }
-//                    });
 
 
                 } catch (Exception e) {
