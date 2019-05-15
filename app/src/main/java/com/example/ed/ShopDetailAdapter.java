@@ -64,7 +64,7 @@ public class ShopDetailAdapter extends BaseAdapter {
             viewHolder.shop_name = convertView.findViewById(R.id.shop_name);
             viewHolder.type = convertView.findViewById(R.id.shop_type);
 //            viewHolder.shop_cuisine = convertView.findViewById(R.id.shop_cuisine);
-            viewHolder.product_grid = convertView.findViewById(R.id.product_grid);
+//            viewHolder.product_grid = convertView.findViewById(R.id.product_grid);
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder) convertView.getTag();

@@ -1,8 +1,11 @@
 package com.example.ed;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -107,7 +110,7 @@ class RegisterRequest extends AsyncTask {
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    private String ipAddress = "http://192.168.1.10:5000";
+    private String ipAddress = "http://35.198.228.3:5000";
 
     public RegisterRequest(String pathUrl, String params, Context ctx) {
         this.url = this.ipAddress + pathUrl;
@@ -138,13 +141,13 @@ class RegisterRequest extends AsyncTask {
 
                 try {
                     Log.e("register",response.body().string());
-                    changeListShop c = new changeListShop(ctx);
-//                    c.showSuccess();
+                    afterRegister c = new afterRegister(ctx);
+                    c.success();
 
                 } catch (Exception e) {
                     Log.e("err",e.getMessage());
-                    changeListShop c = new changeListShop(ctx);
-//                    c.showError();
+                    afterRegister c = new afterRegister(ctx);
+                    c.error();
                 }
             }
         });
@@ -152,26 +155,49 @@ class RegisterRequest extends AsyncTask {
         return null;
     }
 
-    class changeListShop {
+    class afterRegister {
         private final Handler handler;
-        private GridView listShop;
-        private  ShopAdapter shopAdapter;
 
-        public changeListShop(Context context){
+        public afterRegister(Context context){
             handler = new Handler(context.getMainLooper());
         }
 
-        public void showSuccess() {
+        public void success() {
             // Do work
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    AlertDialog alert = new AlertDialog.Builder(ctx.getApplicationContext()).setTitle("Success").show();
+                    new AlertDialog.Builder(ctx)
+                            .setTitle("Tạo tài khoản thành công")
+                            .setPositiveButton("Đăng nhập", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    System.out.println("đăng nhập");
+
+                                    final Activity activity = (Activity) ctx;
+                                    FragmentManager transaction = activity.getFragmentManager();
+                                    FragmentTransaction ft = transaction.beginTransaction();
+                                    ft.replace(R.id.main_content, new LoginFragment());
+                                    ft.commit();
+
+                                }
+                            }).setNegativeButton("Trang chủ", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    System.out.println("trang chủ");
+
+                                    final Activity activity = (Activity) ctx;
+                                    FragmentManager transaction = activity.getFragmentManager();
+                                    FragmentTransaction ft = transaction.beginTransaction();
+                                    ft.replace(R.id.main_content, new HomeFragment());
+                                    ft.commit();
+                                }
+                            }).show();
                 }
             });
         }
 
-        public void showError() {
+        public void error() {
             // Do work
             runOnUiThread(new Runnable() {
                 @Override

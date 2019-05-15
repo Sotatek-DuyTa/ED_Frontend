@@ -9,12 +9,18 @@
         android:icon="@drawable/ic_user"
         android:id="@+id/menu_login"
         android:title="@string/menu_item__login" />
+
+    <item
+        android:icon="@drawable/ic_user"
+        android:id="@+id/user"
+        android:title="@string/menu_user" />
+
     <item
         android:icon="@drawable/ic_search"
         android:id="@+id/menu_search"
         android:title="@string/menu_item__search" />
     <item
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/ic_maps_and_flags"
         android:id="@+id/menu_search_api"
-        android:title="@string/menu_item__search" />
+        android:title="Location" />
 </menu>

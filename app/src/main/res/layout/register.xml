@@ -3,115 +3,121 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ScrollView
         android:layout_centerInParent="true"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:textAlignment="center"
-            android:textColor="@color/colorLogo"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:text="@string/app_name" />
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/name_input"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:textColorHint="@color/textInputAuthPage"
-            android:ems="10"
-            android:hint="@string/hint_name"
-            android:selectAllOnFocus="true"
-            android:textColor="@color/textInputAuthPage"
-            android:inputType="textEmailAddress"
-            android:paddingBottom="20dp"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:text=""
-            android:textSize="10sp" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="@string/app_name"
+                android:textAlignment="center"
+                android:textColor="@color/colorLogo"
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/email_input"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:textColorHint="@color/textInputAuthPage"
-            android:ems="10"
-            android:hint="@string/hint_email"
-            android:selectAllOnFocus="true"
-            android:textColor="@color/textInputAuthPage"
-            android:inputType="textEmailAddress"
-            android:paddingBottom="20dp"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:text=""
-            android:textSize="10sp" />
+            <EditText
+                android:id="@+id/name_input"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:ems="10"
+                android:hint="@string/hint_name"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="20dp"
+                android:selectAllOnFocus="true"
+                android:text=""
+                android:textColor="@color/textInputAuthPage"
+                android:textColorHint="@color/textInputAuthPage"
+                android:textSize="10sp" />
 
-        <EditText
-            android:id="@+id/password_input"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:ems="10"
-            android:selectAllOnFocus="true"
-            android:hint="@string/hint_password"
-            android:inputType="textWebPassword"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="20dp"
-            android:text=""
-            android:textColor="@color/textInputAuthPage"
-            android:textColorHint="@color/textInputAuthPage"
-            android:textSize="10sp" />
+            <EditText
+                android:id="@+id/email_input"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:ems="10"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="20dp"
+                android:selectAllOnFocus="true"
+                android:text=""
+                android:textColor="@color/textInputAuthPage"
+                android:textColorHint="@color/textInputAuthPage"
+                android:textSize="10sp" />
 
-        <EditText
-            android:id="@+id/password_confirm_input"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:textColorHint="@color/textInputAuthPage"
-            android:ems="10"
-            android:selectAllOnFocus="true"
-            android:paddingBottom="20dp"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:hint="@string/hint_password_confirm"
-            android:textColor="@color/textInputAuthPage"
-            android:inputType="textWebPassword"
-            android:text=""
-            android:textSize="10sp" />
+            <EditText
+                android:id="@+id/password_input"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:ems="10"
+                android:hint="@string/hint_password"
+                android:inputType="textWebPassword"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="20dp"
+                android:selectAllOnFocus="true"
+                android:text=""
+                android:textColor="@color/textInputAuthPage"
+                android:textColorHint="@color/textInputAuthPage"
+                android:textSize="10sp" />
 
-        <Button
-            android:id="@+id/register_btn"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_01"
-            android:text="@string/button_register"
-            android:textColor="@color/colorWhite"
-            android:textSize="12sp"
-            style="?android:attr/borderlessButtonStyle"
-            android:textStyle="normal" />
+            <EditText
+                android:id="@+id/password_confirm_input"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:hint="@string/hint_password_confirm"
+                android:inputType="textWebPassword"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="20dp"
+                android:selectAllOnFocus="true"
+                android:text=""
+                android:textColor="@color/textInputAuthPage"
+                android:textColorHint="@color/textInputAuthPage"
+                android:textSize="10sp" />
 
-        <Button
-            android:id="@+id/redirect_to_login_page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:text="@string/suggest_login"
-            android:textAlignment="center"
-            android:textSize="8sp"
-            android:textColor="@color/textSuggestAuthPage" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/register_btn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_01"
+                android:text="@string/button_register"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/redirect_to_login_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/suggest_login"
+                android:textAlignment="center"
+                android:textColor="@color/textSuggestAuthPage"
+                android:textSize="8sp" />
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>

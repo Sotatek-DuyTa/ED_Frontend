@@ -113,8 +113,11 @@ public class HomeFragment extends Fragment {
 
         listShop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                int user_id = ((MyApplication) ((Activity) v.getContext()).getApplication()).getCurrentUserId();
+
                 Intent intent = new Intent(HomeFragment.this.getActivity(), ShopDetailFragment.class);
                 intent.putExtra("shop_id", Integer.parseInt(GetAllShopRequest.shopList.get(position).getShop_id()) );
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
 //                Log.e("errrr", "asdasdsadasda");
             }
@@ -134,13 +137,15 @@ class GetAllShopRequest extends AsyncTask {
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    private String ipAddress = "http://192.168.1.10:5000";
+    private String ipAddress = "http://35.198.228.3:5000";
 
     public GetAllShopRequest(String pathUrl, String params, Context ctx, GridView listShop) {
         this.url = this.ipAddress + pathUrl;
         this.bodyParams = params;
         this.ctx = ctx;
         this.listShop = listShop;
+
+        System.out.println(params);
     }
 
 
@@ -166,6 +171,8 @@ class GetAllShopRequest extends AsyncTask {
             public void onResponse(Call call, Response response) throws IOException {
 
                 try {
+                    shopList = new ArrayList<Shop>();
+                    System.out.println("runing");
                     JSONObject data = new JSONObject(response.body().string());
                     JSONArray shopArray;
                     try {
@@ -204,13 +211,6 @@ class GetAllShopRequest extends AsyncTask {
         private GridView listShop;
         private  ShopAdapter shopAdapter;
         private FragmentActivity myContext;
-
-//        public changeListShop(Context context, GridView listShop, ShopAdapter shopAdapter, FragmentActivity myContext){
-//            this.listShop = listShop;
-//            this.myContext = myContext;
-//            this.shopAdapter = shopAdapter;
-//            handler = new Handler(context.getMainLooper());
-//        }
 
         public changeListShop(Context context, GridView listShop, ShopAdapter shopAdapter){
             this.listShop = listShop;

@@ -1,12 +1,21 @@
 package com.example.ed;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -44,31 +53,21 @@ public class ShopDetailRequest extends AsyncTask {
     private TextView shop_name;
     private TextView sort_title ;
     private TextView type;
+    private TextView time;
+    private TextView ship;
     private ImageView image;
     private TextView location;
     private Button likes;
+    private WebView webView;
+    private  String params;
+    private  int shop_id;
+    private  int user_id;
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-    private String ipAddress = "http://192.168.1.10:5000";
+    private String ipAddress = "http://35.198.228.3:5000";
 
-//    public ShopDetailRequest(String pathUrl, String params, Context ctx, TextView shop_name, TextView sort_title, TextView type, ImageView image, Button likes, TextView cuisine, TextView location, TextView like_text) {
-//        this.url = this.ipAddress + pathUrl;
-//        this.bodyParams = params;
-//        this.ctx = ctx;
-//
-//        this.shop_name = shop_name;
-//        this.sort_title = sort_title;
-//        this.type = type;
-//        this.image = image;
-//        this.cuisine = cuisine;
-//        this.location = location;
-//        this.likes = likes;
-//        this.like_text = like_text;
-//
-//    }
-
-    public ShopDetailRequest(String pathUrl, String params, Context ctx, TextView shop_name, TextView sort_title, TextView type, ImageView image, Button likes, TextView location) {
+    public ShopDetailRequest(String pathUrl, String params, Context ctx, TextView shop_name, TextView sort_title, TextView type, ImageView image, Button likes, TextView location, WebView webView, int shop_id, int user_id, TextView time, TextView ship) {
         this.url = this.ipAddress + pathUrl;
         this.bodyParams = params;
         this.ctx = ctx;
@@ -79,7 +78,11 @@ public class ShopDetailRequest extends AsyncTask {
         this.image = image;
         this.location = location;
         this.likes = likes;
-
+        this.webView = webView;
+        this.shop_id = shop_id;
+        this.user_id = user_id;
+        this.time = time;
+        this.ship = ship;
     }
 
     @Override
@@ -104,120 +107,9 @@ public class ShopDetailRequest extends AsyncTask {
             public void onResponse(Call call, Response response) throws IOException {
 
                 try {
-                    System.out.println("shop_name : " + shop_name);
-                    System.out.println("location : " +  location);
-//                    updateUI c = new ShopDetailRequest.updateUI(ctx, shop_name, sort_title,  type, image, likes, cuisine, location, response.body().string(), like_text);
-                    updateUI c = new ShopDetailRequest.updateUI(ctx, shop_name, sort_title,  type, image, likes, location, response.body().string());
+                    updateUI c = new ShopDetailRequest.updateUI(ctx, shop_name, sort_title,  type, image, likes, location, response.body().string(), webView, bodyParams, shop_id, user_id, time, ship);
+                    c.getCategory_Comment();
                     c.updateShop();
-//                    JSONObject data = new JSONObject(response.body().string());
-//                    JSONObject shop = (JSONObject) data.get("shops");
-
-//                    String cuisine = shop.getString("cuisine");
-//                    String likes = shop.getString("likes");
-//                    String location = shop.getString("location");
-//                    String name= shop.getString("name");
-//                    String sort_title = shop.getString("sort_title");
-//                    String type = shop.getString("type");
-
-//                    cuisine.setText(shop.getString("cuisine"));
-//                    likes.setText(shop.getString("likes"));
-//                    location.setText(shop.getString("location"));
-//                    shop_name.setText(shop.getString("name"));
-//                    sort_title.setText(shop.getString("sort_title"));
-//                    type.setText(shop.getString("type"));
-
-//                    System.out.println("shops: " + shop);
-//                    JSONObject json= (JSONObject) new JSONTokener(response.body().string()).nextValue();
-//                    JSONObject data = json.getJSONObject("shops");
-//                    test = (String) json2.get("name");
-
-
-//                    JSONObject data= (JSONObject) new JSONTokener("shops").nextValue();
-//                    JSONObject json2 = data.getJSONObject("results")
-
-//                    JSONObject shop= (JSONObject) data.get("shops");
-//                    JSONArray shopArray = data.getJSONArray("shops");
-//                    System.out.println(shopArray);
-//                    if (shopArray == null) {
-//                        return;
-//                    }
-
-//                    this.shop_name = shop_name;
-//                    this.sort_title = sort_title;
-//                    this.type = type;
-//                    this.image = image;
-//                    this.cuisine = cuisine;
-//                    this.location = location;
-//                    this.likes = likes;\
-
-
-//                    ShopDetailRequest.DownloadImageFromInternet difi = new ShopDetailRequest.DownloadImageFromInternet(image);
-//                    difi.execute(data.getString("url_image"));
-
-//                    String url_image = data.getString("url_image");
-//                    JSONArray categoryArray = data.getJSONArray("categories");
-//                    JSONArray shipping = data.getJSONArray("shipping");
-//                    JSONArray time = data.getJSONArray("time");
-
-
-
-//                    for (int i = 0; i< categoryArray.length(); i++) {
-//                        productList = new ArrayList<Product>();
-//                        JSONObject object = categoryArray.getJSONObject(i);
-//                        String categories_id = object.getString("categories_id");
-//                        String category_name = object.getString("name");
-//                        JSONArray productArray = data.getJSONArray("products");
-//
-//                        for (int u = 0; u< productArray.length(); u++) {
-//                            JSONObject product = categoryArray.getJSONObject(i);
-////                            String product_category_id = product.getString("category_id");
-//                            String product_name = product.getString("name");
-//                            String product_price = product.getString("price");
-//                            String products_id = product.getString("products_id");
-//                            String product_url_image = product.getString("url_image");
-//
-//                            Product p = new Product(product_name, product_price, products_id, product_url_image);
-//
-//                            productList.add(p);
-//                        }
-//
-//                        Category c = new Category(category_name, productList);
-//                        categoryList.add(c);
-//                    }
-//
-//                    for (int i = 0; i< shipping.length(); i++) {
-//                        JSONObject product = shipping.getJSONObject(i);
-//                        String ship_brand = product.getString("ship_brand");
-//                        String shipping_id = product.getString("shipping_id");
-//                        String shop_id = product.getString("shop_id");
-//
-//                        Shipping p = new Shipping(ship_brand, shipping_id, shop_id);
-//
-//                        shippingList.add(p);
-//                    }
-//
-//                    for (int i = 0; i< time.length(); i++) {
-//                        JSONObject product = time.getJSONObject(i);
-//                        String end = product.getString("end");
-//                        String name = product.getString("name");
-//                        String shop_id = product.getString("shop_id");
-//                        String start = product.getString("start");
-//                        String time_id = product.getString("time_id");
-//
-//                        Time t = new Time(end, name, shop_id, start, time_id);
-//
-//                        timeList.add(t);
-//                    }
-
-//                    ShopDetail shopDetail = new ShopDetail(categoryList, cuisine, likes, location, shop_name, sort_title, type, url_image, shippingList, timeList);
-//                    shopDetailList.add(shopDetail);
-
-//                    ShopDetailAdapter shopDetailAdapter = new ShopDetailAdapter(ctx, shopDetailList);
-
-//
-
-//                    shopAdapter.notifyDataSetChanged();
-//
 
                 } catch (Exception e) {
                     Log.e("err",e.getMessage());
@@ -264,18 +156,32 @@ public class ShopDetailRequest extends AsyncTask {
         private ImageView image;
 //        private TextView cuisine ;
         private TextView location;
+        private TextView time;
+        private TextView ship;
         private TextView like_text;
         private Button likes;
         private String JsonList;
+        private WebView webView;
+        private String params;
+        private Integer shop_id;
+        private Integer user_id;
+        private Context ctx;
 
-        public updateUI(Context context, TextView shop_name, TextView sort_title, TextView type, ImageView image, Button likes, TextView location, String JsonList){
+        public updateUI(Context context, TextView shop_name, TextView sort_title, TextView type, ImageView image, Button likes, TextView location, String JsonList, WebView webView, String params, int shop_id, int user_id, TextView time, TextView ship){
             this.shop_name = shop_name;
             this.sort_title = sort_title;
             this.type = type;
+            this.time = time;
+            this.ship = ship;
             this.image = image;
             this.location = location;
             this.likes = likes;
             this.JsonList = JsonList;
+            this.webView = webView;
+            this.params = params;
+            this.shop_id = shop_id;
+            this.user_id = user_id;
+            this.ctx = context;
 
             handler = new Handler(context.getMainLooper());
         }
@@ -288,19 +194,59 @@ public class ShopDetailRequest extends AsyncTask {
                     JSONObject data = null;
                     try {
                         data = new JSONObject(JsonList);
+                        ShopDetailRequest.DownloadImageFromInternet difi = new ShopDetailRequest.DownloadImageFromInternet(image);
                         JSONObject shop = (JSONObject) data.get("shops");
-                        System.out.println(location);
+
+                        difi.execute(shop.getString("url_image"));
 
 //                        cuisine.setText(shop.getString("cuisine"));
                         likes.setText(shop.getString("likes"));
+                        String start = ((shop.getJSONArray("time")).getJSONObject(0)).getString("start");
+                        String end = ((shop.getJSONArray("time")).getJSONObject(1)).getString("end");
+
+                        time.setText("Giờ mở cửa: " + start +" -> " + end);
+
+                        JSONArray shipList = shop.getJSONArray("shipping");
+                        String ship_text = "";
+                        for (int i = 0; i< shipList.length() ; ++i) {
+                            ship_text += shipList.getJSONObject(i).getString("ship_brand");
+                            if( i < shipList.length() - 1) {
+                                ship_text += ", ";
+                            }
+                        }
+
+                        ship.setText(ship_text);
+
+
+//                        String s = ((MyApplication) ((Activity) ctx).getApplication()).getUserId();
+//                        String user_id = ((MyApplication) ((Activity) ctx).getApplication()).getUserId();
+                        likes.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                if (user_id != -1) {
+                                    System.out.println("clicked");
+                                    like_shop ls = new like_shop(user_id, shop_id, likes);
+                                    ls.execute();
+                                } else {
+                                    new AlertDialog.Builder(v.getContext())
+                                    .setTitle("Bạn hãy đăng nhập để dùng chức năng này")
+                                        .setNegativeButton("Ok", null).show();
+                                }
+                            }
+                        });
+
+
                         location.setText(shop.getString("location"));
                         shop_name.setText(shop.getString("name"));
-                        sort_title.setText(shop.getString("sort_title"));
+                        if (shop.getString("sort_title") != "") {
+                            sort_title.setText(shop.getString("sort_title"));
+                        } else {
+                            sort_title.setVisibility(View.INVISIBLE);
+                        }
                         type.setText(shop.getString("type"));
-//                        String url_image = shop.getString("url_image");
 
-                        ShopDetailRequest.DownloadImageFromInternet difi = new ShopDetailRequest.DownloadImageFromInternet(image);
-                        difi.execute(shop.getString("url_image"));
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -308,8 +254,89 @@ public class ShopDetailRequest extends AsyncTask {
             });
         }
 
+//        public void likeHandle () {
+//            runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                }
+//            });
+//        }
+
+        public void getCategory_Comment () {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webView.setWebViewClient(new WebViewClient());
+                    WebSettings webSettings = webView.getSettings();
+                    webSettings.setJavaScriptEnabled(true);
+                    Log.e("user_id", "user_id" +user_id);
+                    if (user_id != -1) {
+                        webView.loadUrl("http://192.168.1.10:8080/product/" + shop_id + "/" + user_id);
+                    } else {
+                        webView.loadUrl("http://192.168.1.10:8080/product/" + shop_id );
+                    }
+//                    System.out.println("http://192.168.1.10:8080/product/" + shop_id);
+
+                }
+            });
+        }
+
         private void runOnUiThread(Runnable r) {
             handler.post(r);
         }
+    }
+}
+
+
+class like_shop extends AsyncTask {
+    private Integer user_id;
+    private Integer shop_id;
+    private Button likes;
+    private String url = "http://35.198.228.3:5000/users_likes_shop";
+
+    public like_shop(Integer user_id, Integer shop_id, Button likes) {
+        super();
+        this.user_id = user_id;
+        this.shop_id = shop_id;
+        this.likes = likes;
+    }
+
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+    @Override
+    protected Object doInBackground(Object[] params) {
+        OkHttpClient client = new OkHttpClient();
+
+        final RequestBody body = RequestBody.create(JSON, "{\"users_id\":" + user_id + ", \"shop_id\": " + shop_id + "}");
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("TAG", e.getMessage());
+                call.cancel();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                try {
+                    JSONObject res = new JSONObject(response.body().string());
+                    Integer count_like = res.getInt("count_like");
+                    System.out.println("hello userid" + user_id);
+                    likes.setText(count_like + "");
+
+                } catch (Exception e) {
+                    Log.e("err", e.getMessage());
+                }
+            }
+        });
+
+        return null;
     }
 }

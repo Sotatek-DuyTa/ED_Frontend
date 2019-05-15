@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/button__go_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:padding="7dp"
+        android:text="Danh sách yêu thích"
+        android:textAlignment="textStart" />
+
+    <ScrollView
+        android:fillViewport="true"
+        android:id="@+id/favourite_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/button__go_user"
+        android:paddingBottom="50dp"
+        android:background="#fff">
+
+        <GridView
+            android:verticalSpacing="5dp"
+            android:horizontalSpacing="5dp"
+            android:background="#fff"
+            android:id="@+id/favourite_shop"
+            android:layout_below="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="1"
+            android:padding="5dp">
+
+        </GridView>
+    </ScrollView>
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:id="@+id/button__logout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:foregroundGravity="center_vertical"
+        android:background="#fff"
+        android:padding="7dp"
+        android:text="Logout"
+        android:textAlignment="textStart" />
+</RelativeLayout>
